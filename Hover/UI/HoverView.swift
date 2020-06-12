@@ -85,6 +85,7 @@ public class HoverView: UIView {
     private var state: State = .none
     private var isOpen = false
     private var offset = CGPoint.zero
+    private var actionHandler: ((HoverView) -> Void)?
     private var currentAnchor: Anchor {
         didSet {
             if state == .disappearing {
@@ -117,6 +118,11 @@ public class HoverView: UIView {
         self.button = HoverButton(with: configuration.color, image: configuration.image, imageSizeRatio: configuration.imageSizeRatio)
         super.init(frame: .zero)
         configure()
+    }
+    
+    public convenience init(with configuration: HoverConfiguration = HoverConfiguration(), actionHandler: @escaping (HoverView) -> Void) {
+        self.init(with: configuration)
+        self.actionHandler = actionHandler
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -196,6 +202,7 @@ private extension HoverView {
     
     @objc
     func onTapInButton() {
+        guard actionHandler == nil else { actionHandler!(self); return }
         animateState(to: !isOpen)
     }
     
