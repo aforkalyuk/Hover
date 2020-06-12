@@ -34,14 +34,14 @@ extension UIView {
     // MARK: Constant
     private enum ShadowConstant {
         static let heightOffset = 0
-        static let opacity: Float = 0.55
-        static let radius: CGFloat = 10
+        static let opacity: Float = 0.08
+        static let radius: CGFloat = 8
     }
     
     // MARK: Functions
     func addShadow() {
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 5)
+        layer.shadowOffset = CGSize(width: 0, height: 4)
         layer.shadowOpacity = ShadowConstant.opacity
         layer.shadowRadius = ShadowConstant.radius
     }
