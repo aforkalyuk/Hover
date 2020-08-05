@@ -69,6 +69,10 @@ class HoverButton: UIControl {
         gradientLayer?.decorateAsCircle()
         addShadow()
     }
+    
+    public func setImage(_ image: UIImage) {
+        imageView.image = image
+    }
 }
 
 // MARK: - Configuration

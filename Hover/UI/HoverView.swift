@@ -133,6 +133,10 @@ public class HoverView: UIView {
         super.layoutSubviews()
         button.center = currentAnchor.center
     }
+    
+    public func setImage(_ image: UIImage) {
+        button.setImage(image)
+    }
 }
 
 public extension HoverView {
